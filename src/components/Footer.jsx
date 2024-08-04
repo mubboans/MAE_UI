@@ -1,272 +1,220 @@
-import * as React from 'react';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
-import EdgesensorHighRoundedIcon from '@mui/icons-material/EdgesensorHighRounded';
-import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
+import navLogo from "../assets/log2-bg.png"
+import FacebookIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/X';
 
-const items = [
-    {
-        icon: <ViewQuiltRoundedIcon />,
-        title: 'Dashboard',
-        description:
-            'This item could provide a snapshot of the most important metrics or data points related to the product.',
-        imageLight: 'url("/static/images/templates/templates-images/dash-light.png")',
-        imageDark: 'url("/static/images/templates/templates-images/dash-dark.png")',
-    },
-    {
-        icon: <EdgesensorHighRoundedIcon />,
-        title: 'Mobile integration',
-        description:
-            'This item could provide information about the mobile app version of the product.',
-        imageLight: 'url("/static/images/templates/templates-images/mobile-light.png")',
-        imageDark: 'url("/static/images/templates/templates-images/mobile-dark.png")',
-    },
-    {
-        icon: <DevicesRoundedIcon />,
-        title: 'Available on all platforms',
-        description:
-            'This item could let users know the product is available on all platforms, such as web, mobile, and desktop.',
-        imageLight: 'url("/static/images/templates/templates-images/devices-light.png")',
-        imageDark: 'url("/static/images/templates/templates-images/devices-dark.png")',
-    },
-];
+const logoStyle = {
+    width: '140px',
+    height: 'auto',
+};
 
-export default function Features() {
-    const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
-
-    const handleItemClick = (index) => {
-        setSelectedItemIndex(index);
-    };
-
-    const selectedFeature = items[selectedItemIndex];
-
+function Copyright() {
     return (
-        <Container id="features" sx={{ py: { xs: 8, sm: 16 } }}>
-            <Grid container spacing={6}>
-                <Grid item xs={12} md={6}>
-                    <div>
-                        <Typography component="h2" variant="h4" color="text.primary">
-                            Product features
+        <Typography variant="body2" color="text.secondary" mt={1}>
+            {'Copyright © '}
+            <Link href="https://mui.com/">Sitemark&nbsp;</Link>
+            {new Date().getFullYear()}
+        </Typography>
+    );
+}
+
+export default function Footer() {
+    return (
+        <Container
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: { xs: 4, sm: 8 },
+                py: { xs: 8, sm: 10 },
+                textAlign: { sm: 'center', md: 'left' },
+            }}
+        >
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    width: '100%',
+                    justifyContent: 'space-between',
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 4,
+                        minWidth: { xs: '100%', sm: '60%' },
+                    }}
+                >
+                    <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
+                        <Box sx={{ ml: '-15px' }}>
+                            <img
+                                src={
+                                    navLogo
+                                }
+                                style={logoStyle}
+                                alt="logo of sitemark"
+                            />
+                        </Box>
+                        <Typography variant="body2" fontWeight={600} gutterBottom>
+                            Newsletter
                         </Typography>
-                        <Typography
-                            variant="body1"
-                            color="text.secondary"
-                            sx={{ mb: { xs: 2, sm: 4 } }}
-                        >
-                            Here you can provide a brief overview of the key features of the
-                            product. For example, you could list the number of features, the types
-                            of features, add-ons, or the benefits of the features.
+                        <Typography variant="body2" color="text.secondary" mb={2}>
+                            Subscribe to our newsletter for weekly updates and promotions.
                         </Typography>
-                    </div>
-                    <Grid container item gap={1} sx={{ display: { xs: 'auto', sm: 'none' } }}>
-                        {items.map(({ title }, index) => (
-                            <Chip
-                                key={index}
-                                label={title}
-                                onClick={() => handleItemClick(index)}
-                                sx={{
-                                    borderColor: (theme) => {
-                                        if (theme.palette.mode === 'light') {
-                                            return selectedItemIndex === index ? 'primary.light' : '';
-                                        }
-                                        return selectedItemIndex === index ? 'primary.light' : '';
-                                    },
-                                    background: (theme) => {
-                                        if (theme.palette.mode === 'light') {
-                                            return selectedItemIndex === index ? 'none' : '';
-                                        }
-                                        return selectedItemIndex === index ? 'none' : '';
-                                    },
-                                    backgroundColor: selectedItemIndex === index ? 'primary.main' : '',
-                                    '& .MuiChip-label': {
-                                        color: selectedItemIndex === index ? '#fff' : '',
-                                    },
+                        <Stack direction="row" spacing={1} useFlexGap>
+                            <TextField
+                                id="outlined-basic"
+                                hiddenLabel
+                                size="small"
+                                variant="outlined"
+                                fullWidth
+                                aria-label="Enter your email address"
+                                placeholder="Your email address"
+                                inputProps={{
+                                    autoComplete: 'off',
+                                    'aria-label': 'Enter your email address',
                                 }}
                             />
-                        ))}
-                    </Grid>
-                    <Box
-                        component={Card}
-                        variant="outlined"
-                        sx={{
-                            display: { xs: 'auto', sm: 'none' },
-                            mt: 4,
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                backgroundImage: (theme) =>
-                                    theme.palette.mode === 'light'
-                                        ? items[selectedItemIndex].imageLight
-                                        : items[selectedItemIndex].imageDark,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                minHeight: 280,
-                            }}
-                        />
-                        <Box sx={{ px: 2, pb: 2 }}>
-                            <Typography color="text.primary" variant="body2" fontWeight="bold">
-                                {selectedFeature.title}
-                            </Typography>
-                            <Typography color="text.secondary" variant="body2" sx={{ my: 0.5 }}>
-                                {selectedFeature.description}
-                            </Typography>
-                            <Link
-                                color="primary"
-                                variant="body2"
-                                fontWeight="bold"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    '& > svg': { transition: '0.2s' },
-                                    '&:hover > svg': { transform: 'translateX(2px)' },
-                                }}
-                            >
-                                <span>Learn more</span>
-                                <ChevronRightRoundedIcon
-                                    fontSize="small"
-                                    sx={{ mt: '1px', ml: '2px' }}
-                                />
-                            </Link>
-                        </Box>
+                            <Button variant="contained" color="primary" sx={{ flexShrink: 0 }}>
+                                Subscribe
+                            </Button>
+                        </Stack>
                     </Box>
-                    <Stack
-                        direction="column"
-                        justifyContent="center"
-                        alignItems="flex-start"
-                        spacing={2}
-                        useFlexGap
-                        sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}
-                    >
-                        {items.map(({ icon, title, description }, index) => (
-                            <Card
-                                key={index}
-                                variant="outlined"
-                                component={Button}
-                                onClick={() => handleItemClick(index)}
-                                sx={{
-                                    p: 3,
-                                    height: 'fit-content',
-                                    width: '100%',
-                                    background: 'none',
-                                    backgroundColor:
-                                        selectedItemIndex === index ? 'action.selected' : undefined,
-                                    borderColor: (theme) => {
-                                        if (theme.palette.mode === 'light') {
-                                            return selectedItemIndex === index
-                                                ? 'primary.light'
-                                                : 'grey.200';
-                                        }
-                                        return selectedItemIndex === index ? 'primary.dark' : 'grey.800';
-                                    },
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        width: '100%',
-                                        display: 'flex',
-                                        textAlign: 'left',
-                                        flexDirection: { xs: 'column', md: 'row' },
-                                        alignItems: { md: 'center' },
-                                        gap: 2.5,
-                                    }}
-                                >
-                                    <Box
-                                        sx={{
-                                            color: (theme) => {
-                                                if (theme.palette.mode === 'light') {
-                                                    return selectedItemIndex === index
-                                                        ? 'primary.main'
-                                                        : 'grey.300';
-                                                }
-                                                return selectedItemIndex === index
-                                                    ? 'primary.main'
-                                                    : 'grey.700';
-                                            },
-                                        }}
-                                    >
-                                        {icon}
-                                    </Box>
-                                    <Box sx={{ textTransform: 'none' }}>
-                                        <Typography
-                                            color="text.primary"
-                                            variant="body2"
-                                            fontWeight="bold"
-                                        >
-                                            {title}
-                                        </Typography>
-                                        <Typography
-                                            color="text.secondary"
-                                            variant="body2"
-                                            sx={{ my: 0.5 }}
-                                        >
-                                            {description}
-                                        </Typography>
-                                        <Link
-                                            color="primary"
-                                            variant="body2"
-                                            fontWeight="bold"
-                                            sx={{
-                                                display: 'inline-flex',
-                                                alignItems: 'center',
-                                                '& > svg': { transition: '0.2s' },
-                                                '&:hover > svg': { transform: 'translateX(2px)' },
-                                            }}
-                                            onClick={(event) => {
-                                                event.stopPropagation();
-                                            }}
-                                        >
-                                            <span>Learn more</span>
-                                            <ChevronRightRoundedIcon
-                                                fontSize="small"
-                                                sx={{ mt: '1px', ml: '2px' }}
-                                            />
-                                        </Link>
-                                    </Box>
-                                </Box>
-                            </Card>
-                        ))}
-                    </Stack>
-                </Grid>
-                <Grid
-                    item
-                    xs={12}
-                    md={6}
-                    sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}
+                </Box>
+                <Box
+                    sx={{
+                        display: { xs: 'none', sm: 'flex' },
+                        flexDirection: 'column',
+                        gap: 1,
+                    }}
                 >
-                    <Card
-                        variant="outlined"
-                        sx={{
-                            height: '100%',
-                            width: '100%',
-                            display: { xs: 'none', sm: 'flex' },
-                            pointerEvents: 'none',
-                        }}
+                    <Typography variant="body2" fontWeight={600}>
+                        Product
+                    </Typography>
+                    <Link color="text.secondary" href="#">
+                        Features
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        Testimonials
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        Highlights
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        Pricing
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        FAQs
+                    </Link>
+                </Box>
+                <Box
+                    sx={{
+                        display: { xs: 'none', sm: 'flex' },
+                        flexDirection: 'column',
+                        gap: 1,
+                    }}
+                >
+                    <Typography variant="body2" fontWeight={600}>
+                        Company
+                    </Typography>
+                    <Link color="text.secondary" href="#">
+                        About us
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        Careers
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        Press
+                    </Link>
+                </Box>
+                <Box
+                    sx={{
+                        display: { xs: 'none', sm: 'flex' },
+                        flexDirection: 'column',
+                        gap: 1,
+                    }}
+                >
+                    <Typography variant="body2" fontWeight={600}>
+                        Legal
+                    </Typography>
+                    <Link color="text.secondary" href="#">
+                        Terms
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        Privacy
+                    </Link>
+                    <Link color="text.secondary" href="#">
+                        Contact
+                    </Link>
+                </Box>
+            </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    pt: { xs: 4, sm: 8 },
+                    width: '100%',
+                    borderTop: '1px solid',
+                    borderColor: 'divider',
+                }}
+            >
+                <div>
+                    <Link color="text.secondary" href="#">
+                        Privacy Policy
+                    </Link>
+                    <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
+                        &nbsp;•&nbsp;
+                    </Typography>
+                    <Link color="text.secondary" href="#">
+                        Terms of Service
+                    </Link>
+                    <Copyright />
+                </div>
+                <Stack
+                    direction="row"
+                    justifyContent="left"
+                    spacing={1}
+                    useFlexGap
+                    sx={{
+                        color: 'text.secondary',
+                    }}
+                >
+                    <IconButton
+                        color="inherit"
+                        href="https://github.com/mui"
+                        aria-label="GitHub"
+                        sx={{ alignSelf: 'center' }}
                     >
-                        <Box
-                            sx={{
-                                m: 'auto',
-                                width: 420,
-                                height: 500,
-                                backgroundSize: 'contain',
-                                backgroundImage: (theme) =>
-                                    theme.palette.mode === 'light'
-                                        ? items[selectedItemIndex].imageLight
-                                        : items[selectedItemIndex].imageDark,
-                            }}
-                        />
-                    </Card>
-                </Grid>
-            </Grid>
+                        <FacebookIcon />
+                    </IconButton>
+                    <IconButton
+                        color="inherit"
+                        href="https://x.com/MaterialUI"
+                        aria-label="X"
+                        sx={{ alignSelf: 'center' }}
+                    >
+                        <TwitterIcon />
+                    </IconButton>
+                    <IconButton
+                        color="inherit"
+                        href="https://www.linkedin.com/company/mui/"
+                        aria-label="LinkedIn"
+                        sx={{ alignSelf: 'center' }}
+                    >
+                        <LinkedInIcon />
+                    </IconButton>
+                </Stack>
+            </Box>
         </Container>
     );
 }

@@ -15,7 +15,7 @@ import LogoCollection from './components/LogoCollection';
 import Highlights from './components/Highlights';
 import Pricing from './components/Pricing';
 import Features from './components/Features';
-import Testimonials from './components/Testimonials';
+import Services from './components/Services';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import getLPTheme from './getLPTheme';
@@ -85,7 +85,7 @@ export default function LandingPage() {
         <LogoCollection />
         <Features />
         <Divider />
-        <Testimonials />
+        <Services />
         <Divider />
         <Highlights />
         <Divider />
@@ -95,10 +95,10 @@ export default function LandingPage() {
         <Divider />
         <Footer />
       </Box>
-      <ToggleCustomTheme
+      {/* <ToggleCustomTheme
         showCustomTheme={showCustomTheme}
         toggleCustomTheme={toggleCustomTheme}
-      />
+      /> */}
     </ThemeProvider>
   );
 }

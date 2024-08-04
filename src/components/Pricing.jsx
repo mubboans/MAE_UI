@@ -1,58 +1,212 @@
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import Chip from '@mui/material/Chip';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import { useTheme } from '@mui/system';
+import Typography from '@mui/material/Typography';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
-const whiteLogos = [
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560628e8573c43893fe0ace_Sydney-white.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f4d520d0517ae8e8ddf13_Bern-white.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f46794c159024c1af6d44_Montreal-white.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e891fa22f89efd7477a_TerraLight.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560a09d1f6337b1dfed14ab_colorado-white.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f5caa77bf7d69fb78792e_Ankara-white.svg',
+const tiers = [
+    {
+        title: 'Free',
+        price: '0',
+        description: [
+            '10 users included',
+            '2 GB of storage',
+            'Help center access',
+            'Email support',
+        ],
+        buttonText: 'Sign up for free',
+        buttonVariant: 'outlined',
+    },
+    {
+        title: 'Professional',
+        subheader: 'Recommended',
+        price: '15',
+        description: [
+            '20 users included',
+            '10 GB of storage',
+            'Help center access',
+            'Priority email support',
+            'Dedicated team',
+            'Best deals',
+        ],
+        buttonText: 'Start now',
+        buttonVariant: 'contained',
+    },
+    {
+        title: 'Enterprise',
+        price: '30',
+        description: [
+            '50 users included',
+            '30 GB of storage',
+            'Help center access',
+            'Phone & email support',
+        ],
+        buttonText: 'Contact us',
+        buttonVariant: 'outlined',
+    },
 ];
 
-const darkLogos = [
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560628889c3bdf1129952dc_Sydney-black.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f4d4d8b829a89976a419c_Bern-black.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f467502f091ccb929529d_Montreal-black.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e911fa22f2203d7514c_TerraDark.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560a0990f3717787fd49245_colorado-black.svg',
-    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f5ca4e548b0deb1041c33_Ankara-black.svg',
-];
-
-const logoStyle = {
-    width: '100px',
-    height: '80px',
-    margin: '0 32px',
-    opacity: 0.7,
-};
-
-export default function LogoCollection() {
-    const theme = useTheme();
-    const logos = theme.palette.mode === 'light' ? darkLogos : whiteLogos;
-
+export default function Pricing() {
     return (
-        <Box id="logoCollection" sx={{ py: 4 }}>
-            <Typography
-                component="p"
-                variant="subtitle2"
-                align="center"
-                color="text.secondary"
+        <Container
+            id="pricing"
+            sx={{
+                pt: { xs: 4, sm: 12 },
+                pb: { xs: 8, sm: 16 },
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: { xs: 3, sm: 6 },
+            }}
+        >
+            <Box
+                sx={{
+                    width: { sm: '100%', md: '60%' },
+                    textAlign: { sm: 'left', md: 'center' },
+                }}
             >
-                Trusted by the best companies
-            </Typography>
-            <Grid container justifyContent="center" sx={{ mt: 0.5, opacity: 0.6 }}>
-                {logos.map((logo, index) => (
-                    <Grid item key={index}>
-                        <img
-                            src={logo}
-                            alt={`Fake company number ${index + 1}`}
-                            style={logoStyle}
-                        />
+                <Typography component="h2" variant="h4" color="text.primary">
+                    Pricing
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                    Quickly build an effective pricing table for your potential customers with
+                    this layout. <br />
+                    It&apos;s built with default Material UI components with little
+                    customization.
+                </Typography>
+            </Box>
+            <Grid container spacing={3} alignItems="center" justifyContent="center">
+                {tiers.map((tier) => (
+                    <Grid
+                        item
+                        key={tier.title}
+                        xs={12}
+                        sm={tier.title === 'Enterprise' ? 12 : 6}
+                        md={4}
+                    >
+                        <Card
+                            sx={{
+                                p: 2,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: 4,
+                                border: tier.title === 'Professional' ? '1px solid' : undefined,
+                                borderColor:
+                                    tier.title === 'Professional' ? 'primary.main' : undefined,
+                                background:
+                                    tier.title === 'Professional'
+                                        ? 'linear-gradient(#033363, #021F3B)'
+                                        : undefined,
+                            }}
+                        >
+                            <CardContent>
+                                <Box
+                                    sx={{
+                                        mb: 1,
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
+                                        color: tier.title === 'Professional' ? 'grey.100' : '',
+                                    }}
+                                >
+                                    <Typography component="h3" variant="h6">
+                                        {tier.title}
+                                    </Typography>
+                                    {tier.title === 'Professional' && (
+                                        <Chip
+                                            icon={<AutoAwesomeIcon />}
+                                            label={tier.subheader}
+                                            size="small"
+                                            sx={{
+                                                background: (theme) =>
+                                                    theme.palette.mode === 'light' ? '' : 'none',
+                                                backgroundColor: 'primary.contrastText',
+                                                '& .MuiChip-label': {
+                                                    color: 'primary.dark',
+                                                },
+                                                '& .MuiChip-icon': {
+                                                    color: 'primary.dark',
+                                                },
+                                            }}
+                                        />
+                                    )}
+                                </Box>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'baseline',
+                                        color: tier.title === 'Professional' ? 'grey.50' : undefined,
+                                    }}
+                                >
+                                    <Typography component="h3" variant="h2">
+                                        ${tier.price}
+                                    </Typography>
+                                    <Typography component="h3" variant="h6">
+                                        &nbsp; per month
+                                    </Typography>
+                                </Box>
+                                <Divider
+                                    sx={{
+                                        my: 2,
+                                        opacity: 0.2,
+                                        borderColor: 'grey.500',
+                                    }}
+                                />
+                                {tier.description.map((line) => (
+                                    <Box
+                                        key={line}
+                                        sx={{
+                                            py: 1,
+                                            display: 'flex',
+                                            gap: 1.5,
+                                            alignItems: 'center',
+                                        }}
+                                    >
+                                        <CheckCircleRoundedIcon
+                                            sx={{
+                                                width: 20,
+                                                color:
+                                                    tier.title === 'Professional'
+                                                        ? 'primary.light'
+                                                        : 'primary.main',
+                                            }}
+                                        />
+                                        <Typography
+                                            component="text"
+                                            variant="subtitle2"
+                                            sx={{
+                                                color:
+                                                    tier.title === 'Professional' ? 'grey.200' : undefined,
+                                            }}
+                                        >
+                                            {line}
+                                        </Typography>
+                                    </Box>
+                                ))}
+                            </CardContent>
+                            <CardActions>
+                                <Button
+                                    fullWidth
+                                    variant={tier.buttonVariant}
+                                    component="a"
+                                    href="/material-ui/getting-started/templates/checkout/"
+                                    target="_blank"
+                                >
+                                    {tier.buttonText}
+                                </Button>
+                            </CardActions>
+                        </Card>
                     </Grid>
                 ))}
             </Grid>
-        </Box>
+        </Container>
     );
 }

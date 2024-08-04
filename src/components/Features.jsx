@@ -12,37 +12,41 @@ import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import EdgesensorHighRoundedIcon from '@mui/icons-material/EdgesensorHighRounded';
 import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
+import vs from "../assets/aboutbg.svg";
+import mission from "../assets/mission.svg"
+import obj from "../assets/obj.svg";
+import darkabo from "../assets/darkabout.svg"
 
 const items = [
     {
         icon: <ViewQuiltRoundedIcon />,
-        title: 'Dashboard',
+        title: 'Our Vision',
         description:
-            'This item could provide a snapshot of the most important metrics or data points related to the product.',
-        imageLight: 'url("/static/images/templates/templates-images/dash-light.png")',
-        imageDark: 'url("/static/images/templates/templates-images/dash-dark.png")',
+            'To be a respectable building contractor delivering beyond expectation, always.',
+        imageLight: vs,
+        imageDark: darkabo,
     },
     {
         icon: <EdgesensorHighRoundedIcon />,
-        title: 'Mobile integration',
+        title: 'Our Mission',
         description:
-            'This item could provide information about the mobile app version of the product.',
-        imageLight: 'url("/static/images/templates/templates-images/mobile-light.png")',
-        imageDark: 'url("/static/images/templates/templates-images/mobile-dark.png")',
+            'To procure projects at competitive pricing, provide safe working conditions and deliver quality work within reasonable time frame.',
+        imageLight: mission,
+        imageDark: obj,
     },
     {
         icon: <DevicesRoundedIcon />,
-        title: 'Available on all platforms',
+        title: 'Our objective',
         description:
-            'This item could let users know the product is available on all platforms, such as web, mobile, and desktop.',
-        imageLight: 'url("/static/images/templates/templates-images/devices-light.png")',
-        imageDark: 'url("/static/images/templates/templates-images/devices-dark.png")',
+            "Our emphasis on clear communication and follow through procedures ensures that client’s objectives are top priority in the planning and execution of all our processes.",
+        imageLight: obj,
+        imageDark: vs,
     },
 ];
 
 export default function Features() {
     const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
-
+    const [theme, setTheme] = React.useState(0);
     const handleItemClick = (index) => {
         setSelectedItemIndex(index);
     };
@@ -55,16 +59,14 @@ export default function Features() {
                 <Grid item xs={12} md={6}>
                     <div>
                         <Typography component="h2" variant="h4" color="text.primary">
-                            Product features
+                            MA ENTERPRISES
                         </Typography>
                         <Typography
                             variant="body1"
                             color="text.secondary"
                             sx={{ mb: { xs: 2, sm: 4 } }}
                         >
-                            Here you can provide a brief overview of the key features of the
-                            product. For example, you could list the number of features, the types
-                            of features, add-ons, or the benefits of the features.
+                            MA Enterprises formly known as V-Tek Power Controls began as a general works contractor in 2010. Over the years, the group has undertaken many challenging projects and accumulated skills, know-how and experiences in design and build solutions, project management services, and related engineering works.
                         </Typography>
                     </div>
                     <Grid container item gap={1} sx={{ display: { xs: 'auto', sm: 'none' } }}>
@@ -74,14 +76,14 @@ export default function Features() {
                                 label={title}
                                 onClick={() => handleItemClick(index)}
                                 sx={{
-                                    borderColor: (theme) => {
-                                        if (theme.palette.mode === 'light') {
-                                            return selectedItemIndex === index ? 'primary.light' : '';
-                                        }
-                                        return selectedItemIndex === index ? 'primary.light' : '';
-                                    },
-                                    background: (theme) => {
-                                        if (theme.palette.mode === 'light') {
+                                    // borderColor: (x) => {
+                                    //     if (x.palette.mode === 'light') {
+                                    //         return selectedItemIndex === index ? 'primary.light' : '';
+                                    //     }
+                                    //     return selectedItemIndex === index ? 'primary.light' : '';
+                                    // },
+                                    background: (x) => {
+                                        if (x.palette.mode === 'light') {
                                             return selectedItemIndex === index ? 'none' : '';
                                         }
                                         return selectedItemIndex === index ? 'none' : '';
@@ -96,7 +98,7 @@ export default function Features() {
                     </Grid>
                     <Box
                         component={Card}
-                        variant="outlined"
+                        // variant="outlined"
                         sx={{
                             display: { xs: 'auto', sm: 'none' },
                             mt: 4,
@@ -104,15 +106,17 @@ export default function Features() {
                     >
                         <Box
                             sx={{
-                                backgroundImage: (theme) =>
-                                    theme.palette.mode === 'light'
-                                        ? items[selectedItemIndex].imageLight
-                                        : items[selectedItemIndex].imageDark,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                minHeight: 280,
+                                backgroundImage: (x) =>
+                                    setTheme(x.palette.mode)
+                                // backgroundSize: 'cover',
+                                // backgroundPosition: 'center',
+                                // minHeight: 280,
                             }}
-                        />
+                        >
+                            <img src={theme === 'light'
+                                ? items[selectedItemIndex].imageLight
+                                : items[selectedItemIndex].imageDark} width='420' height='200' />
+                        </Box>
                         <Box sx={{ px: 2, pb: 2 }}>
                             <Typography color="text.primary" variant="body2" fontWeight="bold">
                                 {selectedFeature.title}
@@ -131,7 +135,7 @@ export default function Features() {
                                     '&:hover > svg': { transform: 'translateX(2px)' },
                                 }}
                             >
-                                <span>Learn more</span>
+                                <span>Contact Us</span>
                                 <ChevronRightRoundedIcon
                                     fontSize="small"
                                     sx={{ mt: '1px', ml: '2px' }}
@@ -150,7 +154,7 @@ export default function Features() {
                         {items.map(({ icon, title, description }, index) => (
                             <Card
                                 key={index}
-                                variant="outlined"
+                                // variant="outlined"
                                 component={Button}
                                 onClick={() => handleItemClick(index)}
                                 sx={{
@@ -160,14 +164,14 @@ export default function Features() {
                                     background: 'none',
                                     backgroundColor:
                                         selectedItemIndex === index ? 'action.selected' : undefined,
-                                    borderColor: (theme) => {
-                                        if (theme.palette.mode === 'light') {
-                                            return selectedItemIndex === index
-                                                ? 'primary.light'
-                                                : 'grey.200';
-                                        }
-                                        return selectedItemIndex === index ? 'primary.dark' : 'grey.800';
-                                    },
+                                    // borderColor: (x) => {
+                                    //     if (x.palette.mode === 'light') {
+                                    //         return selectedItemIndex === index
+                                    //             ? 'primary.light'
+                                    //             : 'grey.200';
+                                    //     }
+                                    //     return selectedItemIndex === index ? 'primary.dark' : 'grey.800';
+                                    // },
                                 }}
                             >
                                 <Box
@@ -182,8 +186,8 @@ export default function Features() {
                                 >
                                     <Box
                                         sx={{
-                                            color: (theme) => {
-                                                if (theme.palette.mode === 'light') {
+                                            color: (x) => {
+                                                if (x.palette.mode === 'light') {
                                                     return selectedItemIndex === index
                                                         ? 'primary.main'
                                                         : 'grey.300';
@@ -225,7 +229,7 @@ export default function Features() {
                                                 event.stopPropagation();
                                             }}
                                         >
-                                            <span>Learn more</span>
+                                            <span>Contact Us</span>
                                             <ChevronRightRoundedIcon
                                                 fontSize="small"
                                                 sx={{ mt: '1px', ml: '2px' }}
@@ -244,7 +248,7 @@ export default function Features() {
                     sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}
                 >
                     <Card
-                        variant="outlined"
+                        // variant="outlined"
                         sx={{
                             height: '100%',
                             width: '100%',
@@ -258,12 +262,18 @@ export default function Features() {
                                 width: 420,
                                 height: 500,
                                 backgroundSize: 'contain',
-                                backgroundImage: (theme) =>
-                                    theme.palette.mode === 'light'
-                                        ? items[selectedItemIndex].imageLight
-                                        : items[selectedItemIndex].imageDark,
+                                backgroundImage: (x) =>
+                                    setTheme(x.palette.mode)
+                                // x.palette.mode === 'light'
+                                //     ? items[selectedItemIndex].imageLight
+                                //     : items[selectedItemIndex].imageDark,
+
                             }}
-                        />
+                        >
+                            <img src={theme == 'light'
+                                ? items[selectedItemIndex].imageLight
+                                : items[selectedItemIndex].imageDark} width='420' height='500' />
+                        </Box>
                     </Card>
                 </Grid>
             </Grid>

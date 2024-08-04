@@ -58,7 +58,7 @@ function AppAppBar({ mode, toggleColorMode }) {
             sx={(theme) => ({
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
+              justifyContent: 'space-around',
               flexShrink: 0,
               borderRadius: '999px',
               bgcolor:
@@ -97,7 +97,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Features
+                    Home
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -105,7 +105,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Testimonials
+                    Services
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -142,7 +142,7 @@ function AppAppBar({ mode, toggleColorMode }) {
               }}
             >
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-              <Button
+              {/* <Button
                 color="primary"
                 variant="text"
                 size="small"
@@ -151,16 +151,16 @@ function AppAppBar({ mode, toggleColorMode }) {
                 target="_blank"
               >
                 Sign in
-              </Button>
+              </Button> */}
               <Button
                 color="primary"
                 variant="contained"
                 size="small"
                 component="a"
-                href="/material-ui/getting-started/templates/sign-up/"
                 target="_blank"
+                onClick={() => scrollToSection('pricing')}
               >
-                Sign up
+                Contact Us
               </Button>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
@@ -196,7 +196,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                     Features
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('testimonials')}>
-                    Testimonials
+                    Services
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('highlights')}>
                     Highlights
@@ -206,7 +206,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
-                  <MenuItem>
+                  {/* <MenuItem>
                     <Button
                       color="primary"
                       variant="contained"
@@ -217,7 +217,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                     >
                       Sign up
                     </Button>
-                  </MenuItem>
+                  </MenuItem> */}
                   <MenuItem>
                     <Button
                       color="primary"
@@ -226,8 +226,9 @@ function AppAppBar({ mode, toggleColorMode }) {
                       href="/material-ui/getting-started/templates/sign-in/"
                       target="_blank"
                       sx={{ width: '100%' }}
+                      onClick={() => scrollToSection('pricing')}
                     >
-                      Sign in
+                      Contact Us
                     </Button>
                   </MenuItem>
                 </Box>
