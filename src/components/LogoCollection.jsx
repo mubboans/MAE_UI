@@ -45,7 +45,7 @@ export default function LogoCollection() {
                 align="center"
                 color="text.secondary"
             >
-                Trusted by Industry Leaders
+                Experience of Working with Industry Giants
             </Typography>
             <Grid container justifyContent="center" sx={{ mt: 5, opacity: 0.6 }}>
                 {logos.map((logo, index) => (

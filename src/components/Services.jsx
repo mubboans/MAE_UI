@@ -11,6 +11,22 @@ import hv from "../assets/hv_lv_systems.png"
 import fas from "../assets/fire_alarm_system.png"
 import hvac from "../assets/hvac.png";
 import plumm from "../assets/plumbing.png";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
+
+
+import s1 from "../assets/s1.png";
+import s2 from "../assets/s2.jpeg";
+import s3 from "../assets/s3.jpg";
+import s4 from "../assets/s4.jpg";
+import s5 from "../assets/s5.webp";
+import s6 from "../assets/s6.jpg";
+import s7 from "../assets/s7.png";
+import s8 from "../assets/s8.png";
+import s9 from "../assets/s9.jpg";
+const swipperArr = [
+    s1, s2, s3, s4, s5, s6, s7, s8, s9
+]
 
 const userTestimonials = [
     {
@@ -156,6 +172,30 @@ export default function Services() {
                     </Grid>
                 ))}
             </Grid>
+
+            <Grid container spacing={2}>
+                <Swiper
+                    cssMode={true}
+                    navigation={true}
+                    pagination={true}
+                    mousewheel={true}
+                    keyboard={true}
+                    modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                    className="mySwiper"
+                >
+                    {swipperArr.map((x, index) => {
+                        // <Grid item xs={12} sm={6} md={3} sx={{ display: 'flex' }}>
+                        <SwiperSlide key={index}>
+                            <img src={
+                                x
+                            } height={'auto'} />
+                            <span>{index}</span>
+                        </SwiperSlide>
+                        // </Grid>
+                    })}
+                </Swiper>
+            </Grid>
+
         </Container>
     );
 }

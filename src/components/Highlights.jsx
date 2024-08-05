@@ -10,6 +10,7 @@ import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
+import { useTheme } from '@mui/material';
 
 const items = [
     {
@@ -51,14 +52,19 @@ const items = [
 ];
 
 export default function Highlights() {
+    const theme = useTheme();
+    let themeProp = {
+        color: theme.palette.mode === 'light' ? 'black' : 'white',
+        bgcolor: theme.palette.mode === 'light' ? '#f0fcfc' : "#ADD8E6",
+    }
     return (
         <Box
             id="highlights"
             sx={{
                 pt: { xs: 4, sm: 12 },
                 pb: { xs: 8, sm: 16 },
-                color: 'white',
-                bgcolor: '#06090a',
+                // color: themeProp.color,
+                // bgcolor: themeProp.bgcolor
             }}
         >
             <Container
@@ -77,7 +83,7 @@ export default function Highlights() {
                     }}
                 >
                     <Typography component="h2" variant="h4">
-                        Highlights
+                        Projects
                     </Typography>
                     <Typography variant="body1" sx={{ color: 'grey.400' }}>
                         Explore why our product stands out: adaptability, durability,
@@ -100,7 +106,7 @@ export default function Highlights() {
                                     border: '1px solid',
                                     borderColor: 'grey.800',
                                     background: 'transparent',
-                                    backgroundColor: 'grey.900',
+                                    // backgroundColor: themeProp.bgcolor,
                                 }}
                             >
                                 <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
