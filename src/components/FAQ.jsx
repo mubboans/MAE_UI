@@ -51,7 +51,7 @@ export default function FAQ() {
                         id="panel1d-header"
                     >
                         <Typography component="h3" variant="subtitle2">
-                            How do I contact customer support if I have a question or issue?
+                            How do I contact if I have a question or issue?
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -60,9 +60,9 @@ export default function FAQ() {
                             gutterBottom
                             sx={{ maxWidth: { sm: '100%', md: '70%' } }}
                         >
-                            You can reach our customer support team by emailing
-                            <Link> support@email.com </Link>
-                            or calling our toll-free number. We&apos;re here to assist you
+                            You can reach by emailing
+                            <Link> maenterprises.bz@gmail.com </Link>
+                            or calling  8286132845,7208683470. We&apos;re here to assist you
                             promptly.
                         </Typography>
                     </AccordionDetails>

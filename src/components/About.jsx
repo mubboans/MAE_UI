@@ -44,7 +44,7 @@ const items = [
     },
 ];
 
-export default function Features() {
+export default function About() {
     const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
     const [theme, setTheme] = React.useState(0);
     const handleItemClick = (index) => {

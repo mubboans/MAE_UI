@@ -7,6 +7,8 @@ import jpchase from "../assets/jpchaseicon.png"
 import sp from "../assets/spi-icon.png"
 import sbut from "../assets/sbut-icon.png";
 import eq from "../assets/equi.png";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
 import pri from "../assets/pri.png";
 const whiteLogos = [
     jioicon,
@@ -41,24 +43,67 @@ export default function LogoCollection() {
         <Box id="logoCollection" sx={{ py: 4 }}>
             <Typography
                 component="p"
-                variant="subtitle2"
+                variant="h4"
                 align="center"
                 color="text.secondary"
             >
-                Experience of Working with Industry Giants
+                Personal Experience of Working with Industry Giants
             </Typography>
-            <Grid container justifyContent="center" sx={{ mt: 5, opacity: 0.6 }}>
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={40}
+                pagination={{
+                    clickable: true,
+                }}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
+                loop={true}
+                modules={[Pagination, Autoplay]}
+                className="mySwiper"
+                breakpoints={{
+                    420: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 50,
+                    },
+                }}
+            >
+                {logos.map((logo, index) => (
+
+                    <SwiperSlide key={index}>
+                        <img
+                            // className="swiper-img"
+                            src={logo}
+
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            {/* <Grid container justifyContent="center" sx={{ mt: 5, opacity: 0.6 }}>
+
                 {logos.map((logo, index) => (
                     <Grid item key={index}>
                         <img
                             src={logo}
-
                             alt={`Fake company number ${index + 1}`}
                             style={logoStyle}
                         />
                     </Grid>
                 ))}
-            </Grid>
+            </Grid> */}
         </Box>
     );
 }
