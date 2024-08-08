@@ -19,6 +19,7 @@ import Services from './components/Services';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import getLPTheme from './getLPTheme';
+import Contact from "./components/Contact"
 
 import "./App.css"
 import 'swiper/css';
@@ -95,6 +96,8 @@ export default function LandingPage() {
         <Pricing />
         <Divider />
         <FAQ />
+        <Divider />
+        <Contact />
         <Divider />
         <Footer />
       </Box>
