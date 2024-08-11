@@ -21,8 +21,8 @@ function Copyright() {
     return (
         <Typography variant="body2" color="text.secondary" mt={1}>
             {'Copyright © '}
-            <Link href="https://mui.com/">Sitemark&nbsp;</Link>
-            {new Date().getFullYear()}
+            <Link href="https://maententerprises.netlify.app/">MA Enterprises&nbsp;</Link>
+            {2024}
         </Typography>
     );
 }
@@ -65,7 +65,7 @@ export default function Footer() {
                                 alt="logo of sitemark"
                             />
                         </Box>
-                        <Typography variant="body2" fontWeight={600} gutterBottom>
+                        {/* <Typography variant="body2" fontWeight={600} gutterBottom>
                             Newsletter
                         </Typography>
                         <Typography variant="body2" color="text.secondary" mb={2}>
@@ -88,7 +88,7 @@ export default function Footer() {
                             <Button variant="contained" color="primary" sx={{ flexShrink: 0 }}>
                                 Subscribe
                             </Button>
-                        </Stack>
+                        </Stack> */}
                     </Box>
                 </Box>
                 <Box
@@ -99,9 +99,11 @@ export default function Footer() {
                     }}
                 >
                     <Typography variant="body2" fontWeight={600}>
-                        Product
+                        <Link color="text.secondary" href="#hero">
+                            Home
+                        </Link>
                     </Typography>
-                    <Link color="text.secondary" href="#">
+                    {/* <Link color="text.secondary" href="#">
                         Features
                     </Link>
                     <Link color="text.secondary" href="#">
@@ -115,6 +117,29 @@ export default function Footer() {
                     </Link>
                     <Link color="text.secondary" href="#">
                         FAQs
+                    </Link> */}
+                </Box>
+                <Box
+                    sx={{
+                        display: { xs: 'none', sm: 'flex' },
+                        flexDirection: 'column',
+                        gap: 1,
+                    }}
+                >
+                    <Link color="text.secondary" href="#features">
+                        About
+                    </Link>
+                </Box>
+
+                <Box
+                    sx={{
+                        display: { xs: 'none', sm: 'flex' },
+                        flexDirection: 'column',
+                        gap: 1,
+                    }}
+                >
+                    <Link color="text.secondary" href="#testimonials">
+                        Services
                     </Link>
                 </Box>
                 <Box
@@ -124,51 +149,25 @@ export default function Footer() {
                         gap: 1,
                     }}
                 >
-                    <Typography variant="body2" fontWeight={600}>
-                        Company
-                    </Typography>
-                    <Link color="text.secondary" href="#">
-                        About us
-                    </Link>
-                    <Link color="text.secondary" href="#">
-                        Careers
-                    </Link>
-                    <Link color="text.secondary" href="#">
-                        Press
-                    </Link>
-                </Box>
-                <Box
-                    sx={{
-                        display: { xs: 'none', sm: 'flex' },
-                        flexDirection: 'column',
-                        gap: 1,
-                    }}
-                >
-                    <Typography variant="body2" fontWeight={600}>
-                        Legal
-                    </Typography>
-                    <Link color="text.secondary" href="#">
-                        Terms
-                    </Link>
-                    <Link color="text.secondary" href="#">
-                        Privacy
-                    </Link>
-                    <Link color="text.secondary" href="#">
-                        Contact
+                    <Link color="text.secondary" href="#highlights">
+                        Projects
                     </Link>
                 </Box>
             </Box>
             <Box
                 sx={{
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     pt: { xs: 4, sm: 8 },
                     width: '100%',
                     borderTop: '1px solid',
                     borderColor: 'divider',
+                    alignItem: "center"
+
                 }}
             >
-                <div>
+                <Copyright />
+                {/* <div>
                     <Link color="text.secondary" href="#">
                         Privacy Policy
                     </Link>
@@ -213,8 +212,8 @@ export default function Footer() {
                     >
                         <LinkedInIcon />
                     </IconButton>
-                </Stack>
+                </Stack> */}
             </Box>
-        </Container>
+        </Container >
     );
 }

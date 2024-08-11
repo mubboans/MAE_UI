@@ -93,7 +93,7 @@ function AppAppBar({ mode, toggleColorMode }) {
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
-                  onClick={() => scrollToSection('features')}
+                  onClick={() => scrollToSection('hero')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -142,7 +142,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 alignItems: 'center',
               }}
             >
-              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+              {/* <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} /> */}
               {/* <Button
                 color="primary"
                 variant="text"
@@ -158,11 +158,12 @@ function AppAppBar({ mode, toggleColorMode }) {
                 variant="contained"
                 size="small"
                 component="a"
-                target="_blank"
-                onClick={() => scrollToSection('pricing')}
+
+                onClick={() => scrollToSection('contact')}
               >
                 Contact Us
               </Button>
+
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
@@ -193,18 +194,22 @@ function AppAppBar({ mode, toggleColorMode }) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
+                  <MenuItem onClick={() => scrollToSection('hero')}>
+                    Home
+                  </MenuItem>
                   <MenuItem onClick={() => scrollToSection('features')}>
-                    Features
+                    About
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('testimonials')}>
                     Services
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('highlights')}>
-                    Highlights
+                    Projects
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('pricing')}>
-                    Pricing
-                  </MenuItem>
+
+
+
+
                   {/* <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem> */}
                   <Divider />
                   {/* <MenuItem>
@@ -224,10 +229,9 @@ function AppAppBar({ mode, toggleColorMode }) {
                       color="primary"
                       variant="outlined"
                       component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
+
                       sx={{ width: '100%' }}
-                      onClick={() => scrollToSection('pricing')}
+                      onClick={() => scrollToSection('contact')}
                     >
                       Contact Us
                     </Button>

@@ -77,7 +77,7 @@ export default function FAQ() {
                         id="panel2d-header"
                     >
                         <Typography component="h3" variant="subtitle2">
-                            Can I return the product if it doesn&apos;t meet my expectations?
+                            What is our working hour
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -86,9 +86,7 @@ export default function FAQ() {
                             gutterBottom
                             sx={{ maxWidth: { sm: '100%', md: '70%' } }}
                         >
-                            Absolutely! We offer a hassle-free return policy. If you&apos;re not
-                            completely satisfied, you can return the product within [number of
-                            days] days for a full refund or exchange.
+                            Empowering your dreams, 9 to 5, every day. Turning visions into reality, one project at a time.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -102,7 +100,7 @@ export default function FAQ() {
                         id="panel3d-header"
                     >
                         <Typography component="h3" variant="subtitle2">
-                            What makes your product stand out from others in the market?
+                            Number of project completed?
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -111,9 +109,7 @@ export default function FAQ() {
                             gutterBottom
                             sx={{ maxWidth: { sm: '100%', md: '70%' } }}
                         >
-                            Our product distinguishes itself through its adaptability, durability,
-                            and innovative features. We prioritize user satisfaction and
-                            continually strive to exceed expectations in every aspect.
+                            Delivering quality solutions. 10+ projects successfully executed.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -127,7 +123,7 @@ export default function FAQ() {
                         id="panel4d-header"
                     >
                         <Typography component="h3" variant="subtitle2">
-                            Is there a warranty on the product, and what does it cover?
+                            Working area across site?
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -136,10 +132,8 @@ export default function FAQ() {
                             gutterBottom
                             sx={{ maxWidth: { sm: '100%', md: '70%' } }}
                         >
-                            Yes, our product comes with a [length of warranty] warranty. It covers
-                            defects in materials and workmanship. If you encounter any issues
-                            covered by the warranty, please contact our customer support for
-                            assistance.
+                            We undertake turnkey HV & LV Electrical, HVAC, FF & FAS, Plumbing Contracts involving Supply,
+                            Installation, Testing and Commissioning.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>

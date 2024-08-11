@@ -92,8 +92,8 @@ export default function LandingPage() {
         <Services />
         <Divider />
         <Highlights />
-        <Divider />
-        <Pricing />
+        {/* <Divider /> */}
+        {/* <Pricing /> */}
         <Divider />
         <FAQ />
         <Divider />

@@ -83,10 +83,11 @@ export default function Services() {
             <Box
                 sx={{
                     width: { sm: '100%', md: '60%' },
-                    textAlign: { sm: 'left', md: 'center' },
+                    textAlign: { sm: 'center', md: 'center' },
+                    justifyContent: 'center'
                 }}
             >
-                <Typography component="h2" variant="h4" color="text.primary">
+                <Typography textAlign="center" component="h2" variant="h4" color="text.primary">
                     Our Services
                 </Typography>
                 <Typography
