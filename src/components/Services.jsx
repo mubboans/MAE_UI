@@ -1,32 +1,39 @@
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import hv from "../assets/hv_lv_systems.png"
-import fas from "../assets/fire_alarm_system.png"
+import {
+    Container,
+    Box,
+    Typography,
+    Grid,
+    Card,
+    CardHeader,
+    CardMedia,
+    CardContent,
+    Avatar
+} from '@mui/material';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+
+
+
+// import { Pagination } from 'swiper/modules';
+
+
+
+import hv from "../assets/hv_lv_systems.png";
+import fas from "../assets/fire_alarm_system.png";
 import hvac from "../assets/hvac.png";
 import plumm from "../assets/plumbing.png";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
-
-
 import s1 from "../assets/s1.png";
-import s2 from "../assets/s2.jpeg";
-import s3 from "../assets/s3.jpg";
-import s4 from "../assets/s4.jpg";
-import s5 from "../assets/s5.webp";
-import s6 from "../assets/s6.jpg";
 import s7 from "../assets/s7.png";
 import s8 from "../assets/s8.png";
+import s2 from "../assets/s2.png";
+import s3 from "../assets/s3.jpg";
+import s4 from "../assets/s4.png";
+import s5 from "../assets/s5.webp";
+import s6 from "../assets/s6.jpg";
 import s9 from "../assets/s9.jpg";
-const swipperArr = [
-    s1, s2, s3, s4, s5, s6, s7, s8, s9
-]
+
+// const swipperArr = [s1, s7, s8, s2, s3, s4, s5, s6, s9];
 
 const userTestimonials = [
     {
@@ -40,7 +47,6 @@ const userTestimonials = [
         avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />,
         name: 'FF & FAS System',
         image: fas,
-        occupation: 'Lead Product Designer',
         testimonial:
             "Hydrant, Sprinkler, Drencher, external hydrant & Pump room FF works. Public Address, Card Access, CCTV System, Security System, Audio & Visual Systems, Voice & Data Networking Structured Cabling.",
     },
@@ -48,40 +54,19 @@ const userTestimonials = [
         avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />,
         name: 'HVAC SYSTEM',
         image: hvac,
-        occupation: 'CTO',
         testimonial:
             'DX, VRF/VRV, Chiller, Air Distribution system, Ducting, Copper piping, Annual Rate Contract for all MEP Works, MS & GI pipe with accessories. System Integration with BMS system.',
     },
     {
         avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/4.jpg" />,
         name: 'PLUMBING SYSTEM',
-        occupation: 'Senior Engineer',
         image: plumm,
         testimonial:
             "Domestic piping, Flushing piping, Low noise piping, Shaft piping, Internal water supply, Internal flushing water supply, Prv installation, Pumps installation Panel installation, CI main soil and waste Piping",
     },
-    // {
-    //     avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/5.jpg" />,
-    //     name: 'John Smith',
-    //     occupation: 'Product Designer',
-    //     testimonial:
-    //         "I've tried other similar products, but this one stands out for its innovative features. It's clear that the makers put a lot of thought into creating a solution that truly addresses user needs.",
-    // },
-    // {
-    //     avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/6.jpg" />,
-    //     name: 'Daniel Wolf',
-    //     occupation: 'CDO',
-    //     testimonial:
-    //         "The quality of this product exceeded my expectations. It's durable, well-designed, and built to last. Definitely worth the investment!",
-    // },
 ];
 
-
-
 export default function Services() {
-
-
-
     return (
         <Container
             id="testimonials"
@@ -98,31 +83,26 @@ export default function Services() {
             <Box
                 sx={{
                     width: { sm: '100%', md: '60%' },
-                    textAlign: { sm: 'left', md: 'center' },
+                    textAlign: { sm: 'center', md: 'center' },
+                    justifyContent: 'center'
                 }}
             >
-                <Typography component="h2" variant="h4" color="text.primary">
+                <Typography textAlign="center" component="h2" variant="h4" color="text.primary">
                     Our Services
                 </Typography>
                 <Typography
                     textAlign="center"
-                    style={{
-                        marginBottom: '10px'
-                    }}
+                    sx={{ mb: 2 }}
                     color="text.secondary"
-                    sx={{ alignSelf: 'center', width: { sm: '100%', md: '100%' } }}
                 >
                     MA Enterprises is an end-to-end turnkey solution provider offering services for our clients engineering,
                     procurement, construction, supply, erection, testing and commissioning needs and assist globally in
                     optimizing their performance and maintenance objectives through our services.
                 </Typography>
-                <Typography style={{
-                    marginBottom: '20px'
-                }} variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
+                <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
                     We undertake turnkey HV & LV Electrical, HVAC, FF & FAS, Plumbing Contracts involving Supply,
                     Installation, Testing and Commissioning.
                 </Typography>
-
             </Box>
             <Grid container spacing={2}>
                 {userTestimonials.map((testimonial, index) => (
@@ -139,9 +119,7 @@ export default function Services() {
                             <CardMedia
                                 component="img"
                                 height="auto"
-                                style={{
-                                    borderRadius: '10px'
-                                }}
+                                style={{ borderRadius: '10px' }}
                                 image={testimonial.image}
                             />
                             <CardContent>
@@ -158,44 +136,120 @@ export default function Services() {
                                 }}
                             >
                                 <CardHeader
-                                    // avatar={testimonial.avatar}
                                     title={testimonial.name}
-                                // subheader={testimonial.occupation}
                                 />
-                                {/* <img
-                                    src={logos[index]}
-                                    alt={`Logo ${index + 1}`}
-                                    style={logoStyle}
-                                /> */}
                             </Box>
                         </Card>
                     </Grid>
                 ))}
             </Grid>
+            {/* <Typography component="h2" variant="h4" color="text.primary">
+                Our Services
+            </Typography> */}
 
-            <Grid container spacing={2}>
-                <Swiper
-                    cssMode={true}
-                    navigation={true}
-                    pagination={true}
-                    mousewheel={true}
-                    keyboard={true}
-                    modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                    className="mySwiper"
-                >
-                    {swipperArr.map((x, index) => {
-                        // <Grid item xs={12} sm={6} md={3} sx={{ display: 'flex' }}>
-                        <SwiperSlide key={index}>
-                            <img src={
-                                x
-                            } height={'auto'} />
-                            <span>{index}</span>
-                        </SwiperSlide>
-                        // </Grid>
-                    })}
-                </Swiper>
-            </Grid>
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={40}
+                pagination={{
+                    clickable: true,
+                }}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
+                loop={true}
+                modules={[Pagination, Autoplay]}
+                className="mySwiper"
+                breakpoints={{
+                    420: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 50,
+                    },
+                }}
+            >
+                <SwiperSlide>
+                    <img
+                        className="swiper-img"
+                        src={s1}
 
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+
+                    <img
+                        src={s2}
+                        className="swiper-img"
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+
+                    <img
+                        src={s3}
+                        className="swiper-img"
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+
+                    <img
+                        src={s4}
+                        className="swiper-img"
+                    />
+                </SwiperSlide>
+
+                <SwiperSlide>
+
+                    <img
+                        src={s5}
+                        className="swiper-img"
+                    />
+
+                </SwiperSlide>
+                <SwiperSlide>
+
+                    <img
+                        src={s6}
+                        className="swiper-img"
+                    />
+
+                </SwiperSlide>
+                <SwiperSlide>
+
+                    <img
+                        src={s7}
+                        className="swiper-img"
+                    />
+
+                </SwiperSlide>
+                <SwiperSlide>
+
+                    <img
+                        src={s8}
+                        className="swiper-img"
+                    />
+
+                </SwiperSlide>
+                <SwiperSlide>
+
+                    <img
+                        src={s9}
+                        className="swiper-img"
+                    />
+
+                </SwiperSlide>
+
+            </Swiper>
         </Container>
     );
 }

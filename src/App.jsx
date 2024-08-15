@@ -1,8 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -16,12 +14,16 @@ import Hero from './components/Hero';
 import LogoCollection from './components/LogoCollection';
 import Highlights from './components/Highlights';
 import Pricing from './components/Pricing';
-import Features from './components/Features';
+import About from './components/About';
 import Services from './components/Services';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import getLPTheme from './getLPTheme';
+import Contact from "./components/Contact"
 
+import "./App.css"
+import 'swiper/css';
+import 'swiper/css/pagination';
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
     <Box
@@ -85,15 +87,17 @@ export default function LandingPage() {
       <Hero />
       <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />
-        <Features />
+        <About />
         <Divider />
         <Services />
         <Divider />
         <Highlights />
-        <Divider />
-        <Pricing />
+        {/* <Divider /> */}
+        {/* <Pricing /> */}
         <Divider />
         <FAQ />
+        <Divider />
+        <Contact />
         <Divider />
         <Footer />
       </Box>
