@@ -61,7 +61,7 @@ export default function FAQ() {
                             sx={{ maxWidth: { sm: '100%', md: '70%' } }}
                         >
                             You can reach by emailing
-                            <Link> maenterprises.bz@gmail.com </Link>
+                            <Link> info@maenterprisse.com </Link>
                             or calling  8286132845,7208683470. We&apos;re here to assist you
                             promptly.
                         </Typography>

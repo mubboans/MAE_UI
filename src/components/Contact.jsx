@@ -280,7 +280,7 @@ const Contact = () => {
                                                 color="primary.main"
                                             >
 
-                                                maenterprises.bz@gmail.com
+                                                info@maenterprisse.com
                                             </Typography>
                                         </a>
                                     </Grid>

@@ -27,6 +27,9 @@ import card3 from "../assets/card3.png"
 import card4 from "../assets/card4.png"
 import card5 from "../assets/card5.png"
 import card6 from "../assets/card6.png"
+import card7 from "../assets/card7.png"
+import card8 from "../assets/card8.png"
+import card9 from "../assets/card9.png"
 const items = [
     {
 
@@ -54,7 +57,7 @@ const items = [
     },
     {
 
-        title: 'Big Bazar @ Vapi',
+        title: 'Big Bazar',
         description:
             'Integrate our product into your routine with an intuitive and easy-to-use interface.',
         contractor:
@@ -99,6 +102,45 @@ const items = [
         description:
             'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
         image: card6,
+        values: '2.40 Crores'
+    },
+    {
+
+        title: 'BURGER KING',
+        duration:
+            '08 Jun 2016 to 24 May 2019',
+        contractor:
+
+            'RNB Infra Projects',
+        description:
+            'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+        image: card7,
+        values: '2.40 Crores'
+    },
+    {
+
+        title: 'TATA CROMA',
+        duration:
+            '08 Jun 2016 to 24 May 2019',
+        contractor:
+
+            'RNB Infra Projects',
+        description:
+            'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+        image: card8,
+        values: '2.40 Crores'
+    },
+    {
+
+        title: 'Godrej & Boyce Co.',
+        duration:
+            '08 Jun 2016 to 24 May 2019',
+        contractor:
+
+            'RNB Infra Projects',
+        description:
+            'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+        image: card9,
         values: '2.40 Crores'
     },
 ];
@@ -152,62 +194,7 @@ export default function Highlights() {
                             alignItems: 'center',
 
                         }} item xs={12} md={4} key={index}>
-                            {/* <Stack
-                                direction="column"
-                                color="inherit"
-                                component={Card}
-                                spacing={1}
-                                useFlexGap
-                                sx={{
-                                    p: 3,
-                                    height: '100%',
-                                    border: '1px solid',
-                                    borderColor: 'grey.800',
-                                    background: 'transparent',
-                                    // backgroundColor: themeProp.bgcolor,
-                                }}
-                            >
-                                <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
-                                <div>
-                                    <Typography fontWeight="medium" gutterBottom>
-                                        {item.title}
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'grey.400' }}>
-                                        {item.description}
-                                    </Typography>
-                                </div>
-                            </Stack> */}
-                            {/* <Card sx={{ display: 'flex' }}>
-                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                        <CardContent sx={{ flex: '1 0 auto' }}>
-                                            <Typography component="div" variant="subtitle1">
-                                                {item.title}
-                                            </Typography>
-                                            <Typography variant="subtitle2" color="text.secondary" component="div">
-                                                {item.description}
-                                            </Typography>
-                                        </CardContent>
-                                        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                                            <IconButton aria-label="previous">
-                                                {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-                                            </IconButton>
-                                            <IconButton aria-label="play/pause">
-                                                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                                            </IconButton>
-                                            <IconButton aria-label="next">
-                                                {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-                                            </IconButton>
-                                            <CardMedia
-                                                component="img"
 
-                                                sx={{ width: 200, borderRadius: 10, height: 150 }}
-                                                image={item.image}
-
-                                            />
-                                        </Box>
-                                    </Box>
-                                </Card>
-                                 */}
                             <Card>
                                 <div>
                                     <CardHeader
@@ -219,7 +206,7 @@ export default function Highlights() {
                                         <CardMedia>
                                             <img
                                                 src={item.image}
-                                                // srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286&dpr=2 2x"
+
                                                 loading="lazy"
                                                 className='card-img'
 
@@ -233,11 +220,12 @@ export default function Highlights() {
                                 {/* </AspectRatio> */}
                                 <CardActions orientation="horizontal">
                                     <div>
-                                        <Typography variant="subtitle2">Principal Contractor: {item.contractor}</Typography>
-                                        <Typography level="body-xs">Contract Duration:{item.duration}</Typography>
-                                        <Typography fontSize="lg" fontWeight="lg">
+                                        {/* <Typography level="body-xs">Contract Duration:{item.duration}</Typography> */}
+                                        {/* <Typography variant="subtitle2">Principal Contractor: {item.contractor}</Typography>
+                                        <Typography level="body-xs">Contract Duration:{item.duration}</Typography> */}
+                                        {/* <Typography fontSize="lg" fontWeight="lg">
                                             Project Contract Value:<b> {item.values}</b>
-                                        </Typography>
+                                        </Typography> */}
                                     </div>
                                 </CardActions>
                             </Card>
