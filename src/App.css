@@ -1,12 +1,12 @@
 .mySwiper {
-  width: inherit !important;
+  width: 100% !important;
   height: 100%;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: transparent;
 
   /* Center slide text vertically */
   display: flex;
@@ -15,15 +15,21 @@
 }
 
 .swiper-img {
-  border-radius: 10px;
-  width: 300px;
-  height: 180px;
+  border-radius: 0;
+  width: min(100%, 320px);
+  aspect-ratio: 16 / 10;
+  height: auto;
+  object-fit: cover;
+  border: 3px solid #111;
 }
 
 .card-img {
-  border-radius: 10px;
-  width: 300px;
-  height: 180px;
+  border-radius: 0;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  object-fit: cover;
+  border: 3px solid #111;
 }
 
 .grid_start_content {
@@ -47,5 +53,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+  }
+  .swiper-img {
+    width: 100%;
   }
 }

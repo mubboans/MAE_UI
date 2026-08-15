@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import EdgesensorHighRoundedIcon from '@mui/icons-material/EdgesensorHighRounded';
@@ -46,16 +47,17 @@ const items = [
 
 export default function About() {
     const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
-    const [theme, setTheme] = React.useState(0);
+    const theme = useTheme();
     const handleItemClick = (index) => {
         setSelectedItemIndex(index);
     };
 
     const selectedFeature = items[selectedItemIndex];
+    const selectedImage = theme.palette.mode === 'light' ? selectedFeature.imageLight : selectedFeature.imageDark;
 
     return (
         <Container id="features" sx={{ py: { xs: 8, sm: 16 } }}>
-            <Grid container spacing={6}>
+            <Grid container spacing={{ xs: 4, md: 6 }} alignItems="stretch">
                 <Grid item xs={12} md={6}>
                     <div>
                         <Typography component="h2" variant="h4" color="text.primary">
@@ -64,12 +66,12 @@ export default function About() {
                         <Typography
                             variant="body1"
                             color="text.secondary"
-                            sx={{ mb: { xs: 2, sm: 4 } }}
+                            sx={{ mb: { xs: 2, sm: 4 }, fontWeight: 600 }}
                         >
                             MA Enterprises formly known as V-Tek Power Controls began as a general works contractor in 2010. Over the years, the group has undertaken many challenging projects and accumulated skills, know-how and experiences in design and build solutions, project management services, and related engineering works.
                         </Typography>
                     </div>
-                    <Grid container item gap={1} sx={{ display: { xs: 'auto', sm: 'none' } }}>
+                    <Grid container item gap={1} sx={{ display: { xs: 'flex', sm: 'none' } }}>
                         {items.map(({ title }, index) => (
                             <Chip
                                 key={index}
@@ -82,15 +84,10 @@ export default function About() {
                                     //     }
                                     //     return selectedItemIndex === index ? 'primary.light' : '';
                                     // },
-                                    background: (x) => {
-                                        if (x.palette.mode === 'light') {
-                                            return selectedItemIndex === index ? 'none' : '';
-                                        }
-                                        return selectedItemIndex === index ? 'none' : '';
-                                    },
-                                    backgroundColor: selectedItemIndex === index ? 'primary.main' : '',
+                                    background: selectedItemIndex === index ? 'primary.light' : 'background.paper',
+                                    backgroundColor: selectedItemIndex === index ? 'primary.light' : 'background.paper',
                                     '& .MuiChip-label': {
-                                        color: selectedItemIndex === index ? '#fff' : '',
+                                        color: '#111111',
                                     },
                                 }}
                             />
@@ -99,23 +96,25 @@ export default function About() {
                     <Box
                         component={Card}
                         // variant="outlined"
-                        sx={{
-                            display: { xs: 'auto', sm: 'none' },
-                            mt: 4,
-                        }}
-                    >
-                        <Box
+                            variant="outlined"
                             sx={{
-                                backgroundImage: (x) =>
-                                    setTheme(x.palette.mode)
-                                // backgroundSize: 'cover',
-                                // backgroundPosition: 'center',
-                                // minHeight: 280,
+                                display: { xs: 'block', sm: 'none' },
+                                mt: 4,
                             }}
                         >
-                            <img src={theme === 'light'
-                                ? items[selectedItemIndex].imageLight
-                                : items[selectedItemIndex].imageDark} width='420' height='200' />
+                        <Box sx={{ p: 2, bgcolor: 'grey.100' }}>
+                            <Box
+                                component="img"
+                                src={selectedImage}
+                                alt={selectedFeature.title}
+                                sx={{
+                                    display: 'block',
+                                    width: '100%',
+                                    height: 'auto',
+                                    maxHeight: 260,
+                                    objectFit: 'contain',
+                                }}
+                            />
                         </Box>
                         <Box sx={{ px: 2, pb: 2 }}>
                             <Typography color="text.primary" variant="body2" fontWeight="bold">
@@ -248,31 +247,34 @@ export default function About() {
                     sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}
                 >
                     <Card
-                        // variant="outlined"
+                        variant="outlined"
                         sx={{
                             height: '100%',
                             width: '100%',
                             display: { xs: 'none', sm: 'flex' },
                             pointerEvents: 'none',
+                            bgcolor: 'grey.100',
                         }}
                     >
                         <Box
                             sx={{
                                 m: 'auto',
-                                width: 420,
-                                height: 500,
-                                backgroundSize: 'contain',
-                                backgroundImage: (x) =>
-                                    setTheme(x.palette.mode)
-                                // x.palette.mode === 'light'
-                                //     ? items[selectedItemIndex].imageLight
-                                //     : items[selectedItemIndex].imageDark,
-
+                                width: '100%',
+                                maxWidth: 460,
+                                p: { sm: 3, md: 4 },
                             }}
                         >
-                            <img src={theme == 'light'
-                                ? items[selectedItemIndex].imageLight
-                                : items[selectedItemIndex].imageDark} width='420' height='500' />
+                            <Box
+                                component="img"
+                                src={selectedImage}
+                                alt={selectedFeature.title}
+                                sx={{
+                                    display: 'block',
+                                    width: '100%',
+                                    height: 460,
+                                    objectFit: 'contain',
+                                }}
+                            />
                         </Box>
                     </Card>
                 </Grid>

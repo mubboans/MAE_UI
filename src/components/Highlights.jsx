@@ -157,8 +157,7 @@ export default function Highlights() {
             sx={{
                 pt: { xs: 4, sm: 12 },
                 pb: { xs: 8, sm: 16 },
-                // color: themeProp.color,
-                // bgcolor: themeProp.bgcolor
+                bgcolor: 'background.default',
             }}
         >
             <Container
@@ -172,14 +171,14 @@ export default function Highlights() {
             >
                 <Box
                     sx={{
-                        width: { sm: '100%', md: '60%' },
-                        textAlign: { sm: 'left', md: 'center' },
+                        width: { xs: '100%', md: '68%' },
+                        textAlign: 'center',
                     }}
                 >
                     <Typography component="h2" variant="h4">
                         Projects
                     </Typography>
-                    <Typography variant="body1" sx={{ color: 'grey.400' }}>
+                    <Typography variant="body1" sx={{ color: 'text.secondary', fontWeight: 700 }}>
                         Experience Our Expertise a Glimpse into Our Project Excellence
                     </Typography>
                 </Box>
@@ -195,21 +194,42 @@ export default function Highlights() {
 
                         }} item xs={12} md={4} key={index}>
 
-                            <Card>
+                            <Card
+                                variant="outlined"
+                                sx={{
+                                    width: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                }}
+                            >
                                 <div>
                                     <CardHeader
                                         title={item.title}
+                                        sx={{
+                                            '& .MuiCardHeader-title': {
+                                                fontWeight: 900,
+                                                textTransform: 'uppercase',
+                                                fontSize: '1rem',
+                                            },
+                                        }}
                                     />
-                                    <CardContent>
+                                    <CardContent sx={{ pt: 0 }}>
                                         {/* <Typography variant="subtitle1" >{item.title}</Typography> */}
 
                                         <CardMedia>
-                                            <img
+                                            <Box
+                                                component="img"
                                                 src={item.image}
-
+                                                alt={item.title}
                                                 loading="lazy"
-                                                className='card-img'
-
+                                                sx={{
+                                                    display: 'block',
+                                                    width: '100%',
+                                                    aspectRatio: '16 / 10',
+                                                    objectFit: 'cover',
+                                                    border: '3px solid',
+                                                    borderColor: 'text.primary',
+                                                }}
                                             />
                                         </CardMedia>
                                     </CardContent>

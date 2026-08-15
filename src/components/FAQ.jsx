@@ -34,8 +34,8 @@ export default function FAQ() {
                 variant="h4"
                 color="text.primary"
                 sx={{
-                    width: { sm: '100%', md: '60%' },
-                    textAlign: { sm: 'left', md: 'center' },
+                    width: { xs: '100%', md: '68%' },
+                    textAlign: 'center',
                 }}
             >
                 Frequently asked questions

@@ -15,7 +15,7 @@ import ToggleColorMode from './ToggleColorMode';
 
 import navLogo from "../assets/log2-bg.png"
 const logoStyle = {
-  width: '140px',
+  width: '118px',
   height: 'auto',
   cursor: 'pointer',
 };
@@ -49,10 +49,10 @@ function AppAppBar({ mode, toggleColorMode }) {
           boxShadow: 0,
           bgcolor: 'transparent',
           backgroundImage: 'none',
-          mt: 2,
+          mt: { xs: 1, sm: 2 },
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ px: { xs: 1.5, sm: 3 } }}>
           <Toolbar
             variant="regular"
             sx={(theme) => ({
@@ -60,19 +60,20 @@ function AppAppBar({ mode, toggleColorMode }) {
               alignItems: 'center',
               justifyContent: 'space-between',
               flexShrink: 0,
-              borderRadius: '999px',
+              minHeight: { xs: 62, md: 68 },
+              borderRadius: 0,
               bgcolor:
                 theme.palette.mode === 'light'
-                  ? 'rgba(255, 255, 255, 0.4)'
-                  : 'rgba(0, 0, 0, 0.4)',
-              backdropFilter: 'blur(24px)',
-              maxHeight: 40,
-              border: '1px solid',
-              borderColor: 'divider',
+                  ? 'rgba(255, 253, 242, 0.94)'
+                  : 'rgba(17, 17, 17, 0.94)',
+              backdropFilter: 'blur(8px)',
+              border: '3px solid',
+              borderColor: 'text.primary',
               boxShadow:
                 theme.palette.mode === 'light'
-                  ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
-                  : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
+                  ? '6px 6px 0 #111111'
+                  : '6px 6px 0 #ffd500',
+              px: { xs: 1, sm: 2 },
             })}
           >
             <Box
@@ -80,7 +81,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 flexGrow: 1,
                 display: 'flex',
                 alignItems: 'center',
-                ml: '-18px',
+                ml: { xs: 0, md: '-10px' },
                 px: 0,
               }}
             >
@@ -94,7 +95,7 @@ function AppAppBar({ mode, toggleColorMode }) {
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
                   onClick={() => scrollToSection('hero')}
-                  sx={{ py: '6px', px: '12px' }}
+                  sx={{ py: '6px', px: '12px', borderRadius: 0 }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Home
@@ -102,7 +103,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 </MenuItem>
                 <MenuItem
                   onClick={() => scrollToSection('features')}
-                  sx={{ py: '6px', px: '12px' }}
+                  sx={{ py: '6px', px: '12px', borderRadius: 0 }}
                 >
                   <Typography variant="body2" color="text.primary">
                     About
@@ -110,7 +111,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 </MenuItem>
                 <MenuItem
                   onClick={() => scrollToSection('testimonials')}
-                  sx={{ py: '6px', px: '12px' }}
+                  sx={{ py: '6px', px: '12px', borderRadius: 0 }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Services
@@ -119,7 +120,7 @@ function AppAppBar({ mode, toggleColorMode }) {
 
                 <MenuItem
                   onClick={() => scrollToSection('highlights')}
-                  sx={{ py: '6px', px: '12px' }}
+                  sx={{ py: '6px', px: '12px', borderRadius: 0 }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Projects
@@ -171,16 +172,19 @@ function AppAppBar({ mode, toggleColorMode }) {
                 color="primary"
                 aria-label="menu"
                 onClick={toggleDrawer(true)}
-                sx={{ minWidth: '30px', p: '4px' }}
+                sx={{ minWidth: 42, minHeight: 42, p: '4px' }}
               >
                 <MenuIcon />
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 <Box
                   sx={{
-                    minWidth: '60dvw',
-                    p: 2,
+                    minWidth: { xs: '82dvw', sm: 360 },
+                    minHeight: '100dvh',
+                    p: 2.5,
                     backgroundColor: 'background.paper',
+                    borderLeft: '3px solid',
+                    borderColor: 'text.primary',
                     flexGrow: 1,
                   }}
                 >
@@ -194,16 +198,16 @@ function AppAppBar({ mode, toggleColorMode }) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection('hero')}>
+                  <MenuItem sx={{ my: 1, py: 1.5, borderBottom: '2px solid', borderColor: 'divider' }} onClick={() => scrollToSection('hero')}>
                     Home
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('features')}>
+                  <MenuItem sx={{ my: 1, py: 1.5, borderBottom: '2px solid', borderColor: 'divider' }} onClick={() => scrollToSection('features')}>
                     About
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('testimonials')}>
+                  <MenuItem sx={{ my: 1, py: 1.5, borderBottom: '2px solid', borderColor: 'divider' }} onClick={() => scrollToSection('testimonials')}>
                     Services
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('highlights')}>
+                  <MenuItem sx={{ my: 1, py: 1.5, borderBottom: '2px solid', borderColor: 'divider' }} onClick={() => scrollToSection('highlights')}>
                     Projects
                   </MenuItem>
 

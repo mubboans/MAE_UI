@@ -40,12 +40,21 @@ export default function LogoCollection() {
     const logos = theme.palette.mode === 'light' ? darkLogos : whiteLogos;
 
     return (
-        <Box id="logoCollection" sx={{ py: 4 }}>
+        <Box
+            id="logoCollection"
+            sx={{
+                py: { xs: 4, sm: 6 },
+                borderBottom: '3px solid',
+                borderColor: 'text.primary',
+                bgcolor: 'secondary.light',
+            }}
+        >
             <Typography
                 component="p"
                 variant="h4"
                 align="center"
-                color="text.secondary"
+                color="#111111"
+                sx={{ px: 2, mb: 3, fontSize: { xs: '1.5rem', sm: '2rem' } }}
             >
                 Personal Experience of Working with Industry Giants
             </Typography>
@@ -84,10 +93,19 @@ export default function LogoCollection() {
                 {logos.map((logo, index) => (
 
                     <SwiperSlide key={index}>
-                        <img
-                            // className="swiper-img"
+                        <Box
+                            component="img"
                             src={logo}
-
+                            alt={`Client logo ${index + 1}`}
+                            sx={{
+                                width: 'auto',
+                                maxWidth: '80%',
+                                height: { xs: 70, sm: 90 },
+                                objectFit: 'contain',
+                                p: 1,
+                                bgcolor: 'background.paper',
+                                border: '3px solid #111111',
+                            }}
                         />
                     </SwiperSlide>
                 ))}

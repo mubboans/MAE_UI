@@ -82,8 +82,8 @@ export default function Services() {
         >
             <Box
                 sx={{
-                    width: { sm: '100%', md: '60%' },
-                    textAlign: { sm: 'center', md: 'center' },
+                    width: { xs: '100%', md: '68%' },
+                    textAlign: 'center',
                     justifyContent: 'center'
                 }}
             >
@@ -99,31 +99,39 @@ export default function Services() {
                     procurement, construction, supply, erection, testing and commissioning needs and assist globally in
                     optimizing their performance and maintenance objectives through our services.
                 </Typography>
-                <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
+                <Typography component="p" variant="caption" textAlign="center" sx={{ opacity: 0.9, fontWeight: 800 }}>
                     We undertake turnkey HV & LV Electrical, HVAC, FF & FAS, Plumbing Contracts involving Supply,
                     Installation, Testing and Commissioning.
                 </Typography>
             </Box>
-            <Grid container spacing={2}>
+            <Grid container spacing={{ xs: 3, md: 2.5 }}>
                 {userTestimonials.map((testimonial, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index} sx={{ display: 'flex' }}>
                         <Card
+                            variant="outlined"
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'space-between',
                                 flexGrow: 1,
-                                p: 1,
+                                p: 1.25,
                             }}
                         >
                             <CardMedia
                                 component="img"
-                                height="auto"
-                                style={{ borderRadius: '10px' }}
                                 image={testimonial.image}
+                                alt={testimonial.name}
+                                sx={{
+                                    width: '100%',
+                                    aspectRatio: '4 / 3',
+                                    objectFit: 'contain',
+                                    bgcolor: 'grey.100',
+                                    border: '3px solid',
+                                    borderColor: 'text.primary',
+                                }}
                             />
                             <CardContent>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600 }}>
                                     {testimonial.testimonial}
                                 </Typography>
                             </CardContent>
@@ -147,6 +155,7 @@ export default function Services() {
                 Our Services
             </Typography> */}
 
+            <Box sx={{ width: '100%', border: '3px solid', borderColor: 'text.primary', p: { xs: 1, sm: 2 }, bgcolor: 'background.paper' }}>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={40}
@@ -250,6 +259,7 @@ export default function Services() {
                 </SwiperSlide>
 
             </Swiper>
+            </Box>
         </Container>
     );
 }

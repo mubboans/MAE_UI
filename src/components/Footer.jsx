@@ -36,7 +36,7 @@ export default function Footer() {
                 alignItems: 'center',
                 gap: { xs: 4, sm: 8 },
                 py: { xs: 8, sm: 10 },
-                textAlign: { sm: 'center', md: 'left' },
+                textAlign: { xs: 'left', sm: 'center', md: 'left' },
             }}
         >
             <Box
@@ -45,6 +45,13 @@ export default function Footer() {
                     flexDirection: { xs: 'column', sm: 'row' },
                     width: '100%',
                     justifyContent: 'space-between',
+                    gap: { xs: 3, sm: 4 },
+                    p: { xs: 2, sm: 3 },
+                    bgcolor: 'background.paper',
+                    border: '3px solid',
+                    borderColor: 'text.primary',
+                    boxShadow: (theme) =>
+                        theme.palette.mode === 'light' ? '8px 8px 0 #111111' : '8px 8px 0 #ffd500',
                 }}
             >
                 <Box
@@ -160,7 +167,7 @@ export default function Footer() {
                     justifyContent: 'center',
                     pt: { xs: 4, sm: 8 },
                     width: '100%',
-                    borderTop: '1px solid',
+                    borderTop: '3px solid',
                     borderColor: 'divider',
                     alignItem: "center"
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -15,316 +15,383 @@ import postEmail from '../servies/emailer';
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        contact: '',
-        query: '',
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    contact: "",
+    query: "",
+  });
+  // const [open,setOpen] = useState(false);
+//   const contactRef = useRef(null); // Create a ref for the Contact section
+  const [disable, setdisable] = useState(false);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setdisable(true);
+    console.log(formData, "formData values");
+
+    await postEmail(formData);
+    console.log("data submitted");
+
+    setdisable(false);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      contact: "",
+      query: "",
     });
-    // const [open,setOpen] = useState(false);
-    const [disable, setdisable] = useState(false);
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        setdisable(true)
-        console.log(formData, 'formData values');
+  };
 
-
-        await postEmail(formData);
-        console.log('data submitted');
-
-        setdisable(false);
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            contact: '',
-            query: '',
-        })
-    };
-
-
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
-    };
-    return (
-        <Container
-            id="contact"
-            sx={{
-                pt: { xs: 4, sm: 12 },
-                pb: { xs: 8, sm: 16 },
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: { xs: 3, sm: 6 },
-            }}
-        >
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  return (
+    <Container
+      data-section="contact"
+      sx={{
+        pt: { xs: 4, sm: 12 },
+        pb: { xs: 8, sm: 16 },
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: { xs: 3, sm: 6 },
+      }}
+    >
+      <Box
+        sx={{
+          width: { sm: "100%", md: "100%" },
+          textAlign: { sm: "left", md: "center" },
+        }}
+      >
+        <Grid container spacing={3} alignItems="center" justifyContent="center">
+          <Grid item xs={12} md={7}>
             <Box
-                sx={{
-                    width: { sm: '100%', md: '100%' },
-                    textAlign: { sm: 'left', md: 'center' },
-                }}
+              sx={{
+                marginTop: { xs: 0, md: 8 },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                p: { xs: 2, sm: 3 },
+                bgcolor: "background.paper",
+                border: "3px solid",
+                borderColor: "text.primary",
+                boxShadow: (theme) =>
+                  theme.palette.mode === "light"
+                    ? "8px 8px 0 #111111"
+                    : "8px 8px 0 #ffd500",
+              }}
             >
-                <Grid container spacing={3} alignItems="center" justifyContent="center">
-                    <Grid
-                        item
-
-                        xs={12}
-                        md={7}
+              <Avatar
+                sx={{
+                  m: 1,
+                  bgcolor: "secondary.light",
+                  color: "#111111",
+                  border: "3px solid",
+                  borderColor: "text.primary",
+                }}
+              >
+                <ConnectWithoutContactIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Contact Us
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{ mt: 3, width: "100%" }}
+              >
+                <Grid
+                  container
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  spacing={{ xs: 2, sm: 3 }}
+                >
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      label="First Name"
+                      variant="outlined"
+                      name="firstName"
+                      InputLabelProps={{ shrink: true }}
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      id="lastName"
+                      label="Last Name"
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      InputLabelProps={{ shrink: true }}
+                      value={formData.email}
+                      onChange={handleInputChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="contact"
+                      label="Contact"
+                      type="text"
+                      id="contact"
+                      InputLabelProps={{ shrink: true }}
+                      value={formData.contact}
+                      onChange={handleInputChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="query"
+                      label="Enter your query"
+                      type="text"
+                      id="address"
+                      InputLabelProps={{ shrink: true }}
+                      value={formData.query}
+                      onChange={handleInputChange}
+                      multiline
+                      maxRows={4}
+                    />
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 1,
+                        mt: 1.5,
+                        textAlign: "left",
+                        color: "text.secondary",
+                        fontWeight: 600,
+                      }}
                     >
-
-
-                        <Box
-                            sx={{
-                                marginTop: 8,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                                <ConnectWithoutContactIcon />
-                            </Avatar>
-                            <Typography component="h1" variant="h5">
-                                Contact Us
-                            </Typography>
-                            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                                <Grid container style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }} spacing={4}>
-                                    <Grid item xs={12} sm={6} md={5}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            label="First Name"
-                                            variant="outlined"
-                                            name="firstName"
-                                            value={formData.firstName}
-                                            onChange={handleInputChange}
-                                            autoFocus
-                                        />
-
-                                    </Grid>
-                                    <Grid item xs={12} sm={6} md={5}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            name="lastName"
-                                            value={formData.lastName}
-                                            onChange={handleInputChange}
-                                            id="lastName"
-                                            label="Last Name"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={6} md={5}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            id="email"
-                                            label="Email Address"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleInputChange}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={6} md={5}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            name="contact"
-                                            label="Contact"
-                                            type="text"
-                                            id="contact"
-                                            value={formData.contact}
-                                            onChange={handleInputChange}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={11}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            name="query"
-                                            label="Enter your query"
-                                            type="text"
-                                            id="address"
-                                            value={formData.query}
-                                            onChange={handleInputChange}
-                                            multiline
-                                            maxRows={4}
-                                        />
-                                        {/* <FormControlLabel
-                                            control={<Checkbox defaultChecked color="primary" />}
-                                           
-                                        />
-                                         */}
-                                        <Checkbox defaultChecked color="secondary" />
-                                        I want to receive inspiration, marketing promotions and updates via email.
-                                    </Grid>
-                                    <Button
-                                        type="submit"
-                                        disabled={disable}
-                                        variant="contained"
-                                        sx={{ mt: 3, mb: 2 }}
-                                    >
-                                        Send
-                                    </Button>
-                                </Grid>
-                                {/* <Grid container justifyContent="flex-end">
+                      <Checkbox
+                        defaultChecked
+                        color="secondary"
+                        sx={{ p: 0.25 }}
+                      />
+                      <Typography variant="body2">
+                        I want to receive inspiration, marketing promotions and
+                        updates via email.
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Button
+                    type="submit"
+                    disabled={disable}
+                    variant="contained"
+                    sx={{
+                      mt: 3,
+                      mb: 2,
+                      width: { xs: "calc(100% - 32px)", sm: "auto" },
+                    }}
+                  >
+                    Send
+                  </Button>
+                </Grid>
+                {/* <Grid container justifyContent="flex-end">
                                     <Grid item>
                                         <Link href="#" variant="body2">
                                             Already have an account? Sign in
                                         </Link>
                                     </Grid>
                                 </Grid> */}
-                            </Box>
-                        </Box>
-
-
-                    </Grid>
-
-                    <Grid
-                        item
-                        xs={12}
-                        md={5}
-
-                    >
-                        <Box
-                            style={{
-                                width: '100%',
-                                backgroundImage: 'linear-gradient(120deg, #FFF,#CEE5FD)',
-                                backgroundSize: '100% 20%',
-                                backgroundRepeat: 'no-repeat'
-                            }}
-                        >
-
-                            <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
-                                <Typography
-                                    variant="h6"
-                                    sx={{
-                                        display: 'flex',
-                                        flexDirection: { xs: 'column', md: 'row' },
-                                        alignSelf: 'center',
-                                        textAlign: 'center',
-                                        fontSize: 'clamp(2.5rem, 10vw, 4rem)',
-                                    }}
-                                >
-                                    MA&nbsp;
-                                    <Typography
-                                        component="span"
-                                        variant="h6"
-                                        sx={{
-                                            fontSize: 'clamp(1rem, 10vw, 4rem)',
-                                            color: (theme) =>
-                                                theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
-                                        }}
-                                    >
-                                        Enterprises
-                                    </Typography>
-
-                                </Typography>
-                                <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
-                                    MEP Excellence, Every Time, Every Project
-                                </Typography>
-                                <Grid container style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }} spacing={2}>
-                                    <Grid item xs={4} sm={6} md={3}
-
-                                        className='grid_end_content'
-                                    >
-                                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                                            <CallIcon />
-                                        </Avatar>
-
-
-                                    </Grid>
-                                    <Grid item xs={8} sm={6} md={9}
-                                        className='grid_start_content'
-
-                                    >
-                                        <a style={{
-                                            textDecoration: 'none'
-                                        }} href={'tel:+91 8286132845'}>
-                                            <Typography
-                                                textAlign="center"
-                                                color="primary.main"
-
-                                            >
-
-                                                +91 8286132845
-                                            </Typography>
-                                        </a>
-                                    </Grid>
-                                    <Grid item xs={4} sm={6} md={3}
-                                        className='grid_end_content'                               >
-                                        <Avatar sx={{ m: 1, bgcolor: 'secondary.primary' }}>
-                                            <AllInboxIcon />
-                                        </Avatar>
-
-
-                                    </Grid>
-                                    <Grid item xs={8} sm={6} md={9}
-                                        className='grid_start_content'
-                                    >
-                                        <a style={{
-                                            textDecoration: 'none'
-                                        }} href={'mailto:maenterprises.bz@gmail.com?subject=Interest in Work'}>
-                                            <Typography
-                                                textAlign="center"
-                                                color="primary.main"
-                                            >
-
-                                                info@maenterprisse.com
-                                            </Typography>
-                                        </a>
-                                    </Grid>
-                                    <Grid item xs={4} sm={6} md={3}
-                                        className='grid_end_content'
-                                    >
-                                        <Avatar sx={{ m: 1, bgcolor: 'secondary.primary' }}>
-                                            <LocationCityIcon />
-                                        </Avatar>
-
-
-                                    </Grid>
-                                    <Grid item xs={8} sm={6} md={9} className='grid_start_content' >
-
-                                        <Typography
-                                            textAlign="center"
-                                            color="primary.main"
-                                        >
-
-                                            Maharashtra,India
-                                        </Typography>
-
-                                    </Grid>
-                                </Grid>
-
-
-
-
-                            </Stack>
-                        </Box>
-
-                    </Grid>
-
-                </Grid>
+              </Box>
             </Box>
-            <Snackbar
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                open={disable}
-                autoHideDuration={1200}
-                message="Your Data Submitted"
-                key={{ vertical: 'bottom', horizontal: 'right' }}
-            />
-        </Container>
-    )
+          </Grid>
+
+          <Grid item xs={12} md={5}>
+            <Box
+              sx={{
+                width: "100%",
+                minHeight: "100%",
+                p: { xs: 2, sm: 4 },
+                bgcolor: "primary.light",
+                color: "#111111",
+                border: "3px solid",
+                borderColor: "text.primary",
+                boxShadow: "8px 8px 0 #111111",
+              }}
+            >
+              <Stack spacing={2} useFlexGap sx={{ width: "100%" }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", sm: "row", md: "column" },
+                    alignSelf: "flex-start",
+                    textAlign: "left",
+                    fontSize: { xs: "2.4rem", sm: "3rem", md: "4rem" },
+                    lineHeight: 0.95,
+                    width: "100%",
+                    minWidth: 0,
+                    maxWidth: "100%",
+                  }}
+                >
+                  MA
+                  <Typography
+                    component="span"
+                    variant="h6"
+                    sx={{
+                      ml: { xs: 0, sm: 1, md: 0 },
+                      mt: { xs: 0.5, sm: 0, md: 0.5 },
+                      // ↓ Reduced on desktop so the full word fits without breaking
+                      fontSize: { xs: "inherit", sm: "inherit", md: "3rem" },
+                      color: "#111111",
+                      maxWidth: "100%",
+                      display: "inline-block",
+                      // ↓ Keeps "Enterprises" intact on one line for md and up
+                      whiteSpace: { md: "nowrap" },
+                    }}
+                  >
+                    Enterprises
+                  </Typography>
+                </Typography>
+                <Typography
+                  variant="caption"
+                  textAlign="left"
+                  sx={{ opacity: 0.9, fontWeight: 900 }}
+                >
+                  MEP Excellence, Every Time, Every Project
+                </Typography>
+                <Grid
+                  container
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  spacing={2}
+                >
+                  <Grid item xs={4} sm={6} md={3} className="grid_end_content">
+                    <Avatar
+                      sx={{
+                        m: 1,
+                        bgcolor: "background.paper",
+                        color: "#111111",
+                        border: "3px solid #111111",
+                      }}
+                    >
+                      <CallIcon />
+                    </Avatar>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={8}
+                    sm={6}
+                    md={9}
+                    className="grid_start_content"
+                  >
+                    <a
+                      style={{ textDecoration: "none" }}
+                      href={"tel:+91 8286132845"}
+                    >
+                      <Typography
+                        textAlign="center"
+                        color="#111111"
+                        sx={{ fontWeight: 900, wordBreak: "break-word" }}
+                      >
+                        +91 8286132845
+                      </Typography>
+                    </a>
+                  </Grid>
+                  <Grid item xs={4} sm={6} md={3} className="grid_end_content">
+                    <Avatar
+                      sx={{
+                        m: 1,
+                        bgcolor: "background.paper",
+                        color: "#111111",
+                        border: "3px solid #111111",
+                      }}
+                    >
+                      <AllInboxIcon />
+                    </Avatar>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={8}
+                    sm={6}
+                    md={9}
+                    className="grid_start_content"
+                  >
+                    <a
+                      style={{ textDecoration: "none" }}
+                      href={
+                        "mailto:maenterprises.bz@gmail.com?subject=Interest in Work"
+                      }
+                    >
+                      <Typography
+                        textAlign="center"
+                        color="#111111"
+                        sx={{ fontWeight: 900, wordBreak: "break-word" }}
+                      >
+                        info@maenterprisse.com
+                      </Typography>
+                    </a>
+                  </Grid>
+                  <Grid item xs={4} sm={6} md={3} className="grid_end_content">
+                    <Avatar
+                      sx={{
+                        m: 1,
+                        bgcolor: "background.paper",
+                        color: "#111111",
+                        border: "3px solid #111111",
+                      }}
+                    >
+                      <LocationCityIcon />
+                    </Avatar>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={8}
+                    sm={6}
+                    md={9}
+                    className="grid_start_content"
+                  >
+                    <Typography
+                      textAlign="center"
+                      color="#111111"
+                      sx={{ fontWeight: 900 }}
+                    >
+                      Maharashtra,India
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Stack>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={disable}
+        autoHideDuration={1200}
+        message="Your Data Submitted"
+        key={{ vertical: "bottom", horizontal: "right" }}
+      />
+    </Container>
+  );
 }
 
 export default Contact
